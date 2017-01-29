@@ -1,0 +1,17 @@
+{
+  "name": "neighborhood-map",
+  "homepage": "https://github.com/fsarachu/neighborhood-map",
+  "authors": [
+    "fsarachu <fsarachu@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
