@@ -48,6 +48,10 @@ html, body {
     box-shadow: inset 1px 0 6px 0 rgba(0, 0, 0, 0.16);
 }
 
+.menu-toggle:hover {
+    cursor: pointer;
+}
+
 .menu-toggle .fa {
     position: absolute;
     top: calc(50% - 15px);
