@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/fsarachu/neighborhood-map/issues"
   },
-  "homepage": "https://github.com/fsarachu/neighborhood-map#readme"
+  "homepage": "https://github.com/fsarachu/neighborhood-map#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
