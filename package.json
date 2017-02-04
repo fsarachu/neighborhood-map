@@ -1,0 +1,19 @@
+{
+  "name": "neighborhood-map",
+  "version": "0.0.1",
+  "description": "Explore your neighborhood, add markers to it, and some more awesome stuff. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fsarachu/neighborhood-map.git"
+  },
+  "author": "Franco Sarachu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fsarachu/neighborhood-map/issues"
+  },
+  "homepage": "https://github.com/fsarachu/neighborhood-map#readme"
+}
