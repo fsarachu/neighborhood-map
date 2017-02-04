@@ -1,2 +1,2 @@
 # neighborhood-map
-Explore your neighborhood, add markers to it, and some more awesome stuff.
+Explore your neighborhood, add points of interest, and some more awesome stuff.
