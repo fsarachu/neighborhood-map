@@ -1,7 +1,5 @@
 function getUserLocation(locationHandler) {
     /* Gets the most accurate position available */
-    var lat, lng;
-
     if (navigator.geolocation) {
         // Try to use html5 geolocation
         function geoSuccess(position) {
