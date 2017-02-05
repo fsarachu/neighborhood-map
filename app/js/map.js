@@ -6,7 +6,8 @@ function initMap() {
         zoom: 8
     });
 
-    getUserLocation(function (lat, lng) {
+    getIpGeolocation(function (lat, lng) {
+        alert(lat + " " + lng);
         map.setCenter({"lat": parseInt(lat), "lng": parseInt(lng)});
     });
 }

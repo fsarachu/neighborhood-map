@@ -1,18 +1,17 @@
-function getUserLocation(locationHandler) {
+function getUserLocation(locationCallback) {
     /* Gets the most accurate position available */
     if (navigator.geolocation) {
         // Try to use html5 geolocation
         function geoSuccess(position) {
             // Use user provided geolocation
             console.log("geoSuccess");
-            locationHandler(position.coords.latitude, position.coords.longitude);
+            locationCallback(position.coords.latitude, position.coords.longitude);
         }
 
         function geoError() {
             // Fallback to ip geolocation
             console.log("geoError");
-            var coords = ipGeolocation();
-            locationHandler(coords.lat, coords.lng);
+            getIpGeolocation(locationCallback);
         }
 
         navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
@@ -20,21 +19,15 @@ function getUserLocation(locationHandler) {
     } else {
         // Fallback to ip geolocation
         console.log("ipFallback");
-        var coords = ipGeolocation();
-        locationHandler(coords.lat, coords.lng);
+        getIpGeolocation(locationCallback);
     }
 }
 
-function ipGeolocation() {
-    var coords = {
-        lat: 0,
-        lng: 0
-    };
-
+function getIpGeolocation(callback) {
     $.getScript('http://www.geoplugin.net/javascript.gp', function () {
-        coords.lat = parseInt(geoplugin_latitude());
-        coords.lng = parseInt(geoplugin_longitude());
+        var lat = parseInt(geoplugin_latitude());
+        var lng = parseInt(geoplugin_longitude());
+        alert("Bout to call..");
+        callback(lat, lng);
     });
-
-    return coords;
 }
