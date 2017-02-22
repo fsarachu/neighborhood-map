@@ -5,6 +5,8 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
+const webpackStream = require('webpack-stream');
+const webpack2 = require('webpack');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -31,6 +33,7 @@ gulp.task('scripts', () => {
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.babel())
+    .pipe(webpackStream(require('./webpack.config.js'), webpack2))
     .pipe($.if(dev, $.sourcemaps.write('.')))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));
