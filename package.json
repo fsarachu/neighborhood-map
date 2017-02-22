@@ -29,6 +29,7 @@
     "main-bower-files": "^2.5.0",
     "run-sequence": "^1.2.2",
     "webpack": "^2.2.1",
+    "webpack-stream": "^3.2.0",
     "wiredep": "^4.0.0"
   },
   "eslintConfig": {
