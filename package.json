@@ -43,6 +43,12 @@
         2,
         "single"
       ]
+    },
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "parserOptions": {
+      "sourceType": "module"
     }
   },
   "dependencies": {
