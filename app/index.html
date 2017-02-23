@@ -11,7 +11,7 @@
 
   <!-- build:css styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="/bower_components/slidebars/dist/slidebars.min.css"/>
+  <link rel="stylesheet" href="/bower_components/slidebars/dist/slidebars.min.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -29,12 +29,16 @@
   your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="topbar">
+<div off-canvas="id-1 left shift">
+</div>
+<div class="topbar" canvas="">
   <button class="nav-toggle"><span class="fa fa-navicon"></span></button>
   <h3>Neighborhood Map</h3>
   <button class="search-toggle"><span class="fa fa-search"></span></button>
 </div>
-<div id="map"></div>
+<div canvas="container">
+  <div id="map"></div>
+</div>
 
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
