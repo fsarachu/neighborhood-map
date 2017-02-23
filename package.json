@@ -44,5 +44,8 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
+    "load-google-maps-api": "0.0.2"
   }
 }
