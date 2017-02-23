@@ -1,7 +1,4 @@
-// bower:scss
-@import "bower_components/bootstrap/scss/bootstrap.scss";
-@import "bower_components/font-awesome/scss/font-awesome.scss";
-// endbower
-@import "base";
-@import "map";
-@import "browserUpgrade";
+// Partials
+@import "partials/base";
+@import "partials/map";
+@import "partials/browserUpgrade";
