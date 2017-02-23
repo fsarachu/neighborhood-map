@@ -26,6 +26,12 @@
         "fonts/fontawesome-webfont.woff",
         "fonts/fontawesome-webfont.woff2"
       ]
+    },
+    "slidebars": {
+      "main": [
+        "dist/slidebars.min.js",
+        "dist/slidebars.min.css"
+      ]
     }
   },
   "devDependencies": {
