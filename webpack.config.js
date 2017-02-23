@@ -5,5 +5,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '.tmp/scripts'),
     filename: 'main.js'
+  },
+  module: {
+    loaders: [{
+      test: path.resolve(__dirname, 'app/scripts'),
+      loader: 'babel-loader'
+    }
+    ]
   }
 };
