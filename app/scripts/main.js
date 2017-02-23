@@ -1,1 +1,3 @@
-console.log('\'Allo \'Allo!');
+import initMap from './map/init';
+
+initMap();
