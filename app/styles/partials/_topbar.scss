@@ -29,6 +29,10 @@
     &:hover {
       background: $gray-lighter;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 
 }
