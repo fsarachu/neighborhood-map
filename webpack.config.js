@@ -7,10 +7,11 @@ module.exports = {
     filename: 'main.js'
   },
   module: {
-    loaders: [{
-      test: path.resolve(__dirname, 'app/scripts'),
-      loader: 'babel-loader'
-    }
+    loaders: [
+      {
+        test: path.resolve(__dirname, 'app/scripts'),
+        loader: 'babel-loader'
+      }
     ]
   }
 };
