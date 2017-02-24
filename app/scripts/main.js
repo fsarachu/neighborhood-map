@@ -1,5 +1,4 @@
 import initMap from './map/init';
-import initSlidebars from './slidebars';
+import './other/slidebars';
 
 initMap();
-initSlidebars();
