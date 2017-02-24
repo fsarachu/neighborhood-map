@@ -1,4 +1,6 @@
 import initMap from './map/init';
 import './other/slidebars';
 
-initMap();
+initMap((map) => {
+  console.log(map);
+});
