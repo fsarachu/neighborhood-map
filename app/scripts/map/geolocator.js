@@ -8,14 +8,16 @@ function locateByHtml5(callback, fallbackToIp = false) {
     return;
   }
 
-  function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+  function success(geolocation) {
+    const position = {
+      lat: parseInt(geolocation.coords.latitude),
+      lng: parseInt(geolocation.coords.longitude)
+    };
 
     console.log('Got html5 geolocation!');
-    console.log(`lat: ${latitude} lng: ${longitude}`);
+    console.log(`lat: ${position.lat} lng: ${position.lng}`);
 
-    callback(latitude, longitude);
+    callback(position);
   }
 
   function error() {

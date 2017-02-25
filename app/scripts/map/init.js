@@ -9,13 +9,11 @@ export default function initMap(callback) {
       center: uluru
     });
 
-    geolocate((latitude, longitude) => {
-      let userLocation = {lat: parseInt(latitude), lng: parseInt(longitude)};
-
-      map.setCenter(userLocation);
+    geolocate((position) => {
+      map.setCenter(position);
 
       let marker = new googleMaps.Marker({
-        position: userLocation,
+        position: position,
         map: map
       });
     });
