@@ -53,6 +53,7 @@
     }
   },
   "dependencies": {
+    "geolocator": "^2.1.0",
     "load-google-maps-api": "0.0.2"
   }
 }
