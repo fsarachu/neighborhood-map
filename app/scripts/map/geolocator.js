@@ -35,5 +35,6 @@ function locateByHtml5(callback, fallbackToIp = false) {
 }
 
 function locateByIp(callback) {
+  //TODO
   console.log('Gotta implement this one');
 }
