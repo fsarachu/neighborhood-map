@@ -25,7 +25,13 @@ function locateByHtml5(callback, fallbackToIp = false) {
     }
   }
 
-  navigator.geolocation.getCurrentPosition(success, error);
+  const geoOptions = {
+    enableHighAccuracy: true,
+    maximumAge: 30000,
+    timeout: 6000
+  };
+
+  navigator.geolocation.getCurrentPosition(success, error, geoOptions);
 }
 
 function locateByIp(callback) {
