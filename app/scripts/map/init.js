@@ -11,11 +11,6 @@ export default function initMap(callback) {
 
     geolocate((position) => {
       map.setCenter(position);
-
-      let marker = new googleMaps.Marker({
-        position: position,
-        map: map
-      });
     });
 
     callback(map);
