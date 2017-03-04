@@ -105,7 +105,8 @@ gulp.task('serve', () => {
         routes: {
           '/bower_components': 'bower_components'
         }
-      }
+      },
+      https: true
     });
 
     gulp.watch([
