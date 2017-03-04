@@ -10,8 +10,8 @@ function locateByHtml5(callback, fallbackToIp = false) {
 
   function success(geolocation) {
     const position = {
-      lat: parseInt(geolocation.coords.latitude),
-      lng: parseInt(geolocation.coords.longitude)
+      lat: parseFloat(geolocation.coords.latitude),
+      lng: parseFloat(geolocation.coords.longitude)
     };
 
     console.log('Got html5 geolocation!');
