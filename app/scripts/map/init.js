@@ -8,7 +8,8 @@ export default function initMap(callback) {
   }).then((googleMaps) => {
     let map = new googleMaps.Map(document.getElementById('map'), {
       zoom: 3,
-      center: {lat: 0, lng: 0}
+      center: {lat: 0, lng: 0},
+      gestureHandling: 'cooperative'
     });
 
     // geolocate((position) => {
