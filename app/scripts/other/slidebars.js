@@ -1,3 +1,4 @@
+// TODO: Fix this to use npm packages
 // Initialize Slidebars
 var controller = new slidebars();
 controller.init();
