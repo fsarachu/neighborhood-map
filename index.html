@@ -7,16 +7,22 @@
 </head>
 <body>
 
-<div>
-  <label>First Name: <input type="text" data-bind="textInput: firstName"></label>
-  <br>
-  <label>Last Name<input type="text" data-bind="textInput: lastName"></label>
+<div class="heading">
+  <label>
+    <input type="checkbox" data-bind="checked: selectedAllFruits" title="Select all/none"/>
+    Select
+    <span data-bind="ifnot: selectedAllFruits">All</span>
+    <span data-bind="if: selectedAllFruits">None</span>
+  </label>
 </div>
 
-<ul>
-  <li><strong>First Name:</strong> <span data-bind="text: firstName"></span></li>
-  <li><strong>Last Name:</strong> <span data-bind="text: lastName"></span></li>
-  <li><strong>Full Name:</strong> <span data-bind="text: fullName"></span></li>
+<ul data-bind="foreach: fruits" style="list-style: none">
+  <li>
+    <label>
+      <input type="checkbox" data-bind="checkedValue: $data.id, checked: $data.selected"/>
+      <span data-bind="text: $data.name"></span>
+    </label>
+  </li>
 </ul>
 
 <script src="/dist/build.js"></script>

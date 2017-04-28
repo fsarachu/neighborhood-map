@@ -1,6 +1,4 @@
 import ko from 'knockout';
-import Name from './view-models/Name';
+import MyViewModel from './view-models/MyViewModel';
 
-let name = new Name('Franco', 'Sarachu');
-
-ko.applyBindings(name);
+ko.applyBindings(new MyViewModel());
