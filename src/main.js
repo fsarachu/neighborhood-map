@@ -1,8 +1,6 @@
 import ko from 'knockout';
+import Name from './view-models/Name';
 
-let vm = {
-  message: 'Hello!'
-};
+let name = new Name('Franco', 'Sarachu');
 
-ko.applyBindings(vm);
-
+ko.applyBindings(name);
