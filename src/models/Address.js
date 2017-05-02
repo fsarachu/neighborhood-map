@@ -2,10 +2,10 @@ import ko from 'knockout';
 
 export default class Address {
 
-  constructor() {
-    this.name = ko.observable();
+  constructor(data) {
+    this.name = ko.observable(data.name);
+    this.location = ko.observable(data.location);
     this.marker = ko.observable();
-    this.location = ko.observable();
   }
 
 }
