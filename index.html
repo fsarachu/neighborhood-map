@@ -11,17 +11,16 @@
 </head>
 <body>
 
+<div data-bind="visible: isLoading" class="loader-container">
+  <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+</div>
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <!-- Title -->
       <span class="mdl-layout-title">Neighborhood Map</span>
-      <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <!--<nav class="mdl-navigation mdl-layout&#45;&#45;large-screen-only">-->
-        <!--<a class="mdl-navigation__link" href="#0">Dummy</a>-->
-      <!--</nav>-->
     </div>
   </header>
 
@@ -37,9 +36,9 @@
       <div id="map"></div>
     </div>
   </main>
+
 </div>
 
 <script src="/dist/build.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBezMSiS0N7mNrP_8tGovq_tdgJBdpKqPY&callback=initMap" async defer></script>
 </body>
 </html>
