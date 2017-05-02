@@ -1,0 +1,12 @@
+@import "material-design-lite/src/material-design-lite.scss";
+
+html, body, .page-content, .mdl-layout__content {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}

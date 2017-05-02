@@ -1,30 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="">
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neighborhood Map</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/dist/main.css">
 </head>
 <body>
 
-<div class="heading">
-  <label>
-    <input type="checkbox" data-bind="checked: selectedAllFruits" title="Select all/none"/>
-    Select
-    <span data-bind="ifnot: selectedAllFruits">All</span>
-    <span data-bind="if: selectedAllFruits">None</span>
-  </label>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Neighborhood Map</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <!--<nav class="mdl-navigation mdl-layout&#45;&#45;large-screen-only">-->
+        <!--<a class="mdl-navigation__link" href="#0">Dummy</a>-->
+      <!--</nav>-->
+    </div>
+  </header>
+
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Neighborhood Map</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="#0">Dummy</a>
+    </nav>
+  </div>
+
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div id="map"></div>
+    </div>
+  </main>
 </div>
 
-<ul data-bind="foreach: fruits" style="list-style: none">
-  <li>
-    <label>
-      <input type="checkbox" data-bind="checkedValue: $data.id, checked: $data.selected"/>
-      <span data-bind="text: $data.name"></span>
-    </label>
-  </li>
-</ul>
-
 <script src="/dist/build.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBezMSiS0N7mNrP_8tGovq_tdgJBdpKqPY&callback=initMap" async defer></script>
 </body>
 </html>

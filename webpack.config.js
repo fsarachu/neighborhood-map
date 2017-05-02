@@ -1,8 +1,13 @@
 const path = require('path');
-var webpack = require('webpack');
+const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractSass = new ExtractTextPlugin({
+  filename: "[name].css"
+});
 
 module.exports = {
-  entry: './src/main.js',
+  entry: ['./src/main.js', './src/scss/main.scss'],
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -21,9 +26,28 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.scss$/,
+        use: extractSass.extract({
+          use: [
+            {
+              loader: "css-loader"
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                includePaths: ["./node_modules"]
+              }
+            }
+          ]
+        })
       }
     ]
   },
+  plugins: [
+    extractSass
+  ],
   resolve: {
     alias: {
       // Add script aliases
