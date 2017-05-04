@@ -1,7 +1,11 @@
 import loadGoogleMapsAPI from 'load-google-maps-api';
+import MapStore from '../../store/MapStore';
 
 class Map {
   constructor() {
+    this.store = {
+      map: MapStore,
+    };
     this.googleMaps = null;
     this.map = null;
 
@@ -15,8 +19,8 @@ class Map {
 
   init() {
     this.map = new this.googleMaps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 8
+      center: this.store.map.center(),
+      zoom: this.store.map.zoom(),
     });
   }
 }
