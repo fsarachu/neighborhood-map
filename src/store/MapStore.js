@@ -6,3 +6,5 @@ class MapStore {
     this.zoom = ko.observable(2);
   }
 }
+
+export default new MapStore();
