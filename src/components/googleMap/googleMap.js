@@ -28,14 +28,11 @@ ko.bindingHandlers.map = {
 }
 
 class Map {
-  constructor() {
+  constructor(params) {
     this.googleMaps = null;
     this.map = ko.observable(null);
-    this.center = {
-      lat: ko.observable(0),
-      lng: ko.observable(0)
-    };
-    this.zoom = ko.observable(2);
+    this.center = params.center;
+    this.zoom = params.zoom;
   }
 
   parseOptions(options) {
