@@ -1,6 +1,6 @@
 import ko from 'knockout';
 
-export default class Address {
+export default class Location {
 
   constructor(data) {
     this.name = ko.observable(data.name);
