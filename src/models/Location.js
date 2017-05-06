@@ -16,8 +16,8 @@ export default class Location extends Model {
     return {
       name: this.name(),
       position: {
-        lat: this.position.lat,
-        lng: this.position.lng
+        lat: this.position.lat(),
+        lng: this.position.lng()
       },
     };
   }
