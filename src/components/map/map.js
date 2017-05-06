@@ -1,4 +1,5 @@
 import loadGoogleMapsAPI from 'load-google-maps-api';
+import geolocator from 'geolocator';
 import MapStore from '../../store/MapStore';
 
 class Map {
@@ -21,6 +22,30 @@ class Map {
     this.map = new this.googleMaps.Map(document.getElementById('map'), {
       center: this.store.map.center(),
       zoom: this.store.map.zoom(),
+    });
+
+    this.locate();
+  }
+
+  locate() {
+    let options = {
+      addressLookup: false,
+      desiredAccuracy: 30,
+      enableHighAccuracy: true,
+      fallbackToIP: true,
+      maximumAge: 0,
+      maximumWait: 10000,
+      staticMap: false,
+      timeout: 5000,
+      timezone: false,
+    };
+
+    geolocator.locate(options, (err, location) => {
+      if (err) {
+        console.log(err);
+      }
+
+      console.dir(location);
     });
   }
 }
