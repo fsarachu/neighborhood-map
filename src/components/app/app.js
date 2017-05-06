@@ -1,8 +1,7 @@
-import addressStore from '../../store/AddressStore';
+import addressStore from "../../store/AddressStore";
 
 class App {
-  constructor(params) {
-    this.someProperty = params.something;
+  constructor() {
     this.store = {
       address: addressStore
     };
