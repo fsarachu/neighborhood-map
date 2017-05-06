@@ -10,17 +10,19 @@ ko.bindingHandlers.map = {
         lng: ko.unwrap(all.get('lng')),
       },
       zoom: ko.unwrap(all.get('zoom')),
+      geolocate: ko.unwrap(all.get('geolocate')),
     };
 
     vm.loadMap(options);
   },
-
   update (element, value, all, vm) {
     let map = ko.unwrap(all.get('map'));
-
     if (map) {
-      let zoom = ko.unwrap(all.get('zoom'));
-      map.setZoom(zoom);
+      map.setZoom(ko.unwrap(all.get('zoom')));
+      map.setCenter({
+        lat: ko.unwrap(all.get('lat')),
+        lng: ko.unwrap(all.get('lng')),
+      });
     }
   }
 }
@@ -61,18 +63,22 @@ class Map {
     loadGoogleMapsAPI({key: 'AIzaSyClOMwnqYq0BzWIu4XvFHY_FJ20w3PZ5cw'})
       .then(gmaps => {
         this.googleMaps = gmaps;
-        this.createMap();
+        this.createMap(options.geolocate);
       })
       .catch(e => console.error(e));
   }
 
-  createMap() {
+  createMap(geolocate) {
     let map = new this.googleMaps.Map(document.getElementById('map'), {
       center: new this.googleMaps.LatLng(this.center.lat(), this.center.lng()),
       zoom: this.zoom(),
     });
 
     this.map(map);
+
+    if (geolocate) {
+      this.geolocate();
+    }
   }
 
   geolocate() {
@@ -93,7 +99,9 @@ class Map {
         console.log(err);
       }
 
-      console.dir(location);
+      this.center.lat(location.coords.latitude);
+      this.center.lng(location.coords.longitude);
+      this.zoom(15);
     });
   }
 }
