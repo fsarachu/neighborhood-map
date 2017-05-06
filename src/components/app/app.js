@@ -1,15 +1,13 @@
-import addressStore from "../../store/AddressStore";
+import ko from 'knockout';
+import LocationService from "../../services/LocationService";
 
 class App {
   constructor() {
-    this.store = {
-      address: addressStore
+    this.center = {
+      lat: ko.observable(0),
+      lng: ko.observable(0),
     };
-
-    this.store.address.loadData([
-      {name: 'Almacen', position: {x: 12, y: 4}},
-      {name: 'Super', position: {x: -2, y: 1}}
-    ]);
+    this.zoom = ko.observable(2);
   }
 }
 
