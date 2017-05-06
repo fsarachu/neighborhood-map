@@ -36,11 +36,6 @@ class Map {
       lng: ko.observable(0)
     };
     this.zoom = ko.observable(2);
-
-    setTimeout(() => {
-      console.log("Timeout!");
-      this.zoom(4);
-    }, 5000);
   }
 
   parseOptions(options) {
