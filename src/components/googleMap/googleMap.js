@@ -103,5 +103,5 @@ class Map {
 
 export default {
   viewModel: Map,
-  template: require('./map.html')
+  template: require('./googleMap.html')
 };
