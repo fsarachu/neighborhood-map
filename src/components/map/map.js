@@ -96,7 +96,7 @@ class Map {
 
       this.center.lat(location.coords.latitude);
       this.center.lng(location.coords.longitude);
-      this.zoom(15);
+      this.zoom(14);
     });
   }
 }
