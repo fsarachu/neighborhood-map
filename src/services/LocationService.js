@@ -43,7 +43,7 @@ class LocationService extends DataService {
     ];
 
     for (let property of requiredProperties) {
-      if (!locationData[property]) {
+      if (!locationData.hasOwnProperty(property)) {
         this.errors.push(new DataError(`Missing required property: "${property}"`, locationData));
         hasErrors = true;
       }
