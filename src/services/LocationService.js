@@ -20,6 +20,16 @@ class LocationService extends DataService {
     }
   }
 
+  loadFromLocalStorage() {
+    let locationsData = JSON.parse(window.localStorage.getItem('locations'));
+    this.loadData(locationsData);
+  }
+
+  saveToLocalStorage() {
+    let locationsData = this.locations().map(location => location.toStorable());
+    window.localStorage.setItem('locations', JSON.stringify(locationsData));
+  }
+
   validateLocationData(locationData) {
     let hasErrors = false;
 
