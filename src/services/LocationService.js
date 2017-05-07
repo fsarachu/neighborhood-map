@@ -8,6 +8,7 @@ class LocationService extends DataService {
   constructor() {
     super();
     this.locations = ko.observableArray();
+    this.loadFromLocalStorage();
   }
 
   loadItem(locationData) {
@@ -22,7 +23,9 @@ class LocationService extends DataService {
 
   loadFromLocalStorage() {
     let locationsData = JSON.parse(window.localStorage.getItem('locations'));
-    this.loadData(locationsData);
+    if (locationsData) {
+      this.loadData(locationsData);
+    }
   }
 
   saveToLocalStorage() {
