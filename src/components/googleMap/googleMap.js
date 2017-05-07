@@ -33,6 +33,7 @@ class Map {
     this.map = ko.observable(null);
     this.center = params.center;
     this.zoom = params.zoom;
+    this.isLoading = ko.computed(() => !this.map());
   }
 
   parseOptions(options) {
