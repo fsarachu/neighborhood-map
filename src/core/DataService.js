@@ -26,4 +26,12 @@ export default class DataService {
     throw 'You must override loadItem() in DataService';
   }
 
+  loadFromLocalStorage() {
+    throw 'You must override loadFromLocalStorage() in DataService';
+  }
+
+  saveToLocalStorage() {
+    throw 'You must override saveToLocalStorage() in DataService';
+  }
+
 }
