@@ -56,6 +56,23 @@ class LocationService extends DataService {
 
     return !hasErrors;
   }
+
+  all() {
+    return this.locations().map(location => location.toStorable());
+  }
+
+  create(locationData) {
+    if (this.validateLocationData(locationData)) {
+      try {
+        this.locations.push(new Location(locationData));
+        this.saveToLocalStorage();
+      } catch (e) {
+        throw new DataError(`Couldn't create Location: ${e.message}`, locationData);
+      }
+    }
+
+    this.logErrors();
+  }
 }
 
 export default new LocationService();
