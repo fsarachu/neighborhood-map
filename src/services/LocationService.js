@@ -20,7 +20,7 @@ class LocationService extends DataService {
     }
   }
 
-  validateLocationData(addressData) {
+  validateLocationData(locationData) {
     let hasErrors = false;
 
     let requiredProperties = [
@@ -29,14 +29,14 @@ class LocationService extends DataService {
     ];
 
     for (let property of requiredProperties) {
-      if (!addressData[property]) {
-        this.errors.push(new DataError(`Missing required property: "${property}"`, addressData));
+      if (!locationData[property]) {
+        this.errors.push(new DataError(`Missing required property: "${property}"`, locationData));
         hasErrors = true;
       }
     }
 
-    if (addressData.position && (!addressData.position.lat || !addressData.position.lng || typeof addressData.position.lat != 'number' || typeof addressData.position.lng != 'number')) {
-      this.errors.push(new DataError('Invalid position property', addressData));
+    if (locationData.position && (!locationData.position.lat || !locationData.position.lng || typeof locationData.position.lat != 'number' || typeof locationData.position.lng != 'number')) {
+      this.errors.push(new DataError('Invalid position property', locationData));
       hasErrors = true;
     }
 
