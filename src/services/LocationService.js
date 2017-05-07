@@ -49,7 +49,7 @@ class LocationService extends DataService {
       }
     }
 
-    if (locationData.position && (!locationData.position.lat || !locationData.position.lng || typeof locationData.position.lat != 'number' || typeof locationData.position.lng != 'number')) {
+    if (locationData.position && (!('lat' in locationData.position) || !('lng' in locationData.position) || typeof locationData.position.lat != 'number' || typeof locationData.position.lng != 'number')) {
       this.errors.push(new DataError('Invalid position property', locationData));
       hasErrors = true;
     }
