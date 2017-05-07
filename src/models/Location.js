@@ -9,6 +9,7 @@ export default class Location extends Model {
       lat: ko.observable(data.position.lat),
       lng: ko.observable(data.position.lng),
     };
+    this.highlighted = ko.observable(false);
     this.marker = ko.observable();
   }
 
@@ -19,6 +20,7 @@ export default class Location extends Model {
         lat: this.position.lat(),
         lng: this.position.lng(),
       },
+      highlighted: this.highlighted(),
     };
   }
 
