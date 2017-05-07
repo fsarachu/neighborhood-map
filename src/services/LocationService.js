@@ -38,7 +38,8 @@ class LocationService extends DataService {
 
     let requiredProperties = [
       'name',
-      'position'
+      'position',
+      'highlighted',
     ];
 
     for (let property of requiredProperties) {
@@ -55,7 +56,6 @@ class LocationService extends DataService {
 
     return !hasErrors;
   }
-
 }
 
 export default new LocationService();
