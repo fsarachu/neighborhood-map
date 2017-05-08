@@ -37,15 +37,15 @@ class Map {
   }
 
   parseOptions(options) {
-    if (options.center && options.center.lat) {
+    if ('center' in options && 'lat' in options.center) {
       this.center.lat(Number.parseFloat(options.center.lat));
     }
 
-    if (options.center && options.center.lng) {
+    if ('center' in options && 'lng' in options.center) {
       this.center.lng(Number.parseFloat(options.center.lng));
     }
 
-    if (options.zoom) {
+    if ('zoom' in options) {
       this.zoom(Number.parseInt(options.zoom));
     }
   }
