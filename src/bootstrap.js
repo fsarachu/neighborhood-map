@@ -2,13 +2,13 @@
 import 'material-design-lite/dist/material';
 import ko from 'knockout';
 
-// Import app components
+// Import components
 import AppComponent from './components/app/app';
-import MapComponent from './components/googleMap/googleMap';
+import GoogleMapComponent from './components/googleMap/googleMap';
 
 // Register components
 ko.components.register('app', {...AppComponent});
-ko.components.register('app-google-map', {...MapComponent});
+ko.components.register('app-google-map', {...GoogleMapComponent});
 
 // Apply bindings
 ko.applyBindings();
