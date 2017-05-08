@@ -1,7 +1,7 @@
 import ko from 'knockout';
 import Model from '../core/Model';
 
-export default class Neghborhood extends Model {
+export default class Neighborhood extends Model {
 
   constructor(data) {
     super();
