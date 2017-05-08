@@ -14,6 +14,7 @@ export default class Neighborhood extends Model {
 
   toStorable() {
     return {
+      id: this.id(),
       name: this.name(),
       position: {
         lat: this.position.lat(),
