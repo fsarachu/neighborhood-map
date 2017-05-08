@@ -22,6 +22,10 @@ export default class DataService {
     this.logErrors();
   }
 
+  nextId() {
+    throw 'You must override nextId() in DataService';
+  }
+
   loadItem(itemData) {
     throw 'You must override loadItem() in DataService';
   }
