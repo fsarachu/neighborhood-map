@@ -4,7 +4,7 @@ import Model from '../core/Model';
 export default class Neighborhood extends Model {
 
   constructor(data) {
-    super();
+    super(data.id);
     this.name = ko.observable(data.name);
     this.position = {
       lat: ko.observable(data.position.lat),
