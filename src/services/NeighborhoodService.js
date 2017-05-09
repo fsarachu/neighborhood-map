@@ -78,10 +78,15 @@ class NeighborhoodService extends DataService {
 
     if (this.validateNeighborhoodData(neighborhoodData)) {
       try {
-        this.neighborhoods.push(new Neighborhood(neighborhoodData));
+        let neighborhood = new Neighborhood(neighborhoodData);
+
+        this.neighborhoods.push(neighborhood);
         this.saveToLocalStorage();
-      } catch (e) {
-        throw new DataError(`Couldn't load Neighborhood: ${e.message}`, neighborhoodData);
+
+        return neighborhood;
+      }
+      catch (e) {
+        throw new DataError(`Couldn't create Neighborhood: ${e.message}`, neighborhoodData);
       }
     }
 
