@@ -1,6 +1,5 @@
-import ko from 'knockout';
-import loadGoogleMapsAPI from 'load-google-maps-api';
-import geolocator from 'geolocator';
+import ko from "knockout";
+import loadGoogleMapsAPI from "load-google-maps-api";
 
 ko.bindingHandlers.map = {
   init(element, value, all, vm) {
