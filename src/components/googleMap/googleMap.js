@@ -36,23 +36,7 @@ class Map {
     this.isLoading = ko.computed(() => !this.map());
   }
 
-  parseOptions(options) {
-    if ('center' in options && 'lat' in options.center) {
-      this.center.lat(Number.parseFloat(options.center.lat));
-    }
-
-    if ('center' in options && 'lng' in options.center) {
-      this.center.lng(Number.parseFloat(options.center.lng));
-    }
-
-    if ('zoom' in options) {
-      this.zoom(Number.parseInt(options.zoom));
-    }
-  }
-
   loadMap(options) {
-    this.parseOptions(options);
-
     loadGoogleMapsAPI({key: 'AIzaSyClOMwnqYq0BzWIu4XvFHY_FJ20w3PZ5cw'})
       .then(gmaps => {
         this.googleMaps = gmaps;
@@ -63,7 +47,7 @@ class Map {
 
   createMap(geolocate) {
     let map = new this.googleMaps.Map(document.getElementById('map'), {
-      center: new this.googleMaps.LatLng(this.center.lat(), this.center.lng()),
+      center: new this.googleMaps.LatLng(this.center().lat(), this.center().lng()),
       zoom: this.zoom(),
     });
 
@@ -92,8 +76,8 @@ class Map {
         console.log(err);
       }
 
-      this.center.lat(location.coords.latitude);
-      this.center.lng(location.coords.longitude);
+      this.center().lat(location.coords.latitude);
+      this.center().lng(location.coords.longitude);
       this.zoom(14);
     });
   }
