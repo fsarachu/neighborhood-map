@@ -16,7 +16,6 @@ class WelcomeDialog {
 
   polyfill() {
     if (!('showModal' in this.dialog)) {
-      console.log('Running dialog polyfill');
       dialogPolyfill.registerDialog(this.dialog);
     }
   }
@@ -24,10 +23,8 @@ class WelcomeDialog {
   subscribeToObservable() {
     this.showDialog.subscribe(value => {
       if (value) {
-        console.log(`Open dialog ${this.showDialog()}`);
         this.dialog.showModal();
       } else {
-        console.log(`Close dialog ${this.showDialog()}`);
         this.dialog.close();
       }
     });
@@ -35,7 +32,6 @@ class WelcomeDialog {
 
   openIfRequired() {
     if (this.showDialog()) {
-      console.log('Open from init()');
       this.dialog.showModal();
     }
   }
