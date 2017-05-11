@@ -38,7 +38,7 @@ class LocationService extends DataService {
   }
 
   saveToLocalStorage() {
-    let locationsData = this.locations().map(location => location.toStorable());
+    let locationsData = this.locations().map(l => l.toStorable());
     window.localStorage.setItem('locations', JSON.stringify(locationsData));
   }
 
