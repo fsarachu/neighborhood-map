@@ -9,7 +9,10 @@ class NeighborhoodMap {
     };
     this.neighborhood = params.neighborhood;
     this.mapZoom = ko.observable(2);
-    this.mapCenter = {...this.neighborhood().position};
+    this.mapCenter = ko.observable({
+      lat: ko.observable(0),
+      lng: ko.observable(0),
+    });
   }
 
 }
