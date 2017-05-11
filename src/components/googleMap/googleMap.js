@@ -4,10 +4,14 @@ import loadGoogleMapsAPI from "load-google-maps-api";
 class Map {
   constructor(params) {
     this.googleMaps = null;
-    this.map = ko.observable(null);
     this.center = params.center;
     this.zoom = params.zoom;
-    this.isLoading = ko.computed(() => !this.map());
+    this.map = ko.observable(null);
+    this.isLoading = ko.computed(() => !this.map);
+    this.init();
+  }
+
+  init() {
     this.loadMap();
     this.subscribeToObservables();
   }
