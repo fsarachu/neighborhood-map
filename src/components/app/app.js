@@ -1,17 +1,14 @@
-import ko from 'knockout';
-import LocationService from "../../services/LocationService";
+import ko from "knockout";
+import NeighborhoodService from "../../services/NeighborhoodService";
 
 class App {
   constructor() {
-    this.center = {
-      lat: ko.observable(0),
-      lng: ko.observable(0),
-    };
-    this.zoom = ko.observable(2);
-    this.services = {
-      location: LocationService,
-    };
+    this.neighborhood = ko.observable(NeighborhoodService.get());
+    this.showWelcomeDialog = ko.observable(!this.neighborhood());
+    this.menuTitle = ko.computed(() => this.neighborhood() ? this.neighborhood().name() : 'My Neighborhood');
+    this.showMenu = ko.computed(() => !!this.neighborhood());
   }
+
 }
 
 export default {

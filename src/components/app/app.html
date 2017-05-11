@@ -7,17 +7,17 @@
     </div>
   </header>
 
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Neighborhood Map</span>
+  <div data-bind="if: showMenu" class="mdl-layout__drawer">
+    <span data-bind="text: menuTitle" class="mdl-layout-title"></span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#0">Dummy</a>
     </nav>
   </div>
 
   <main class="mdl-layout__content">
-    <div class="page-content">
-      <app-google-map params="center: center, zoom: zoom"></app-google-map>
-    </div>
+    <app-neighborhood-map params="neighborhood: neighborhood"></app-neighborhood-map>
   </main>
 
 </div>
+
+<app-welcome-dialog params="showDialog: showWelcomeDialog"></app-welcome-dialog>
