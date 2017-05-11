@@ -79,10 +79,8 @@ class NeighborhoodService extends DataService {
     if (this.validateNeighborhoodData(neighborhoodData)) {
       try {
         let neighborhood = new Neighborhood(neighborhoodData);
-
         this.neighborhoods.push(neighborhood);
         this.saveToLocalStorage();
-
         return neighborhood;
       }
       catch (e) {
