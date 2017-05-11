@@ -73,11 +73,16 @@ class LocationService extends DataService {
   }
 
   create(locationData) {
+    locationData.id = this.nextId();
+
     if (this.validateLocationData(locationData)) {
       try {
-        this.locations.push(new Location(locationData));
+        let location = new Location(locationData);
+        this.locations.push(location);
         this.saveToLocalStorage();
-      } catch (e) {
+        return location;
+      }
+      catch (e) {
         throw new DataError(`Couldn't create Location: ${e.message}`, locationData);
       }
     }
