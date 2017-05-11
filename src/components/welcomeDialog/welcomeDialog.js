@@ -4,6 +4,7 @@ class WelcomeDialog {
 
   constructor(params) {
     this.showDialog = params.showDialog;
+    this.customCallback = params.customCallback;
     this.dialog = document.querySelector('.welcome-dialog');
     this.init();
   }
@@ -36,8 +37,12 @@ class WelcomeDialog {
     }
   }
 
-  closeDialog() {
+  getStarted() {
     this.showDialog(false);
+
+    if (typeof this.customCallback === 'function') {
+      this.customCallback();
+    }
   }
 
 }
