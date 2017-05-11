@@ -68,10 +68,6 @@ class LocationService extends DataService {
     return !hasErrors;
   }
 
-  all() {
-    return this.locations().map(location => location.toStorable());
-  }
-
   create(locationData) {
     if (this.validateLocationData(locationData)) {
       try {
