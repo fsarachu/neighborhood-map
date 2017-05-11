@@ -11,6 +11,15 @@ class LocationService extends DataService {
     this.loadFromLocalStorage();
   }
 
+  nextId() {
+    if (this.locations().length) {
+      let ids = this.locations().map(l => l.id());
+      return Math.max(...ids);
+    }
+
+    return 1;
+  }
+
   loadItem(locationData) {
     if (this.validateLocationData(locationData)) {
       try {
