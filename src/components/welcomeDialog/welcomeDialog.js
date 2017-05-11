@@ -1,18 +1,19 @@
 import dialogPolyfill from "dialog-polyfill";
+import postal from 'postal';
 
 class WelcomeDialog {
 
-  constructor(params) {
-    this.showDialog = params.showDialog;
-    this.customCallback = params.customCallback;
+  constructor() {
+    this.channels = {
+      app: postal.channel('app'),
+    };
     this.dialog = document.querySelector('.welcome-dialog');
     this.init();
   }
 
   init() {
     this.polyfill();
-    this.subscribeToObservable();
-    this.openIfRequired();
+    this.subscribeToPostal();
   }
 
   polyfill() {
@@ -21,9 +22,9 @@ class WelcomeDialog {
     }
   }
 
-  subscribeToObservable() {
-    this.showDialog.subscribe(value => {
-      if (value) {
+  subscribeToPostal() {
+    this.channels.app.subscribe('welcomeDialog', data => {
+      if (data.show) {
         this.dialog.showModal();
       } else {
         this.dialog.close();
@@ -31,18 +32,8 @@ class WelcomeDialog {
     });
   }
 
-  openIfRequired() {
-    if (this.showDialog()) {
-      this.dialog.showModal();
-    }
-  }
-
   getStarted() {
-    this.showDialog(false);
-
-    if (typeof this.customCallback === 'function') {
-      this.customCallback();
-    }
+    this.channels.app.publish('welcomeDialog', {show: false});
   }
 
 }
