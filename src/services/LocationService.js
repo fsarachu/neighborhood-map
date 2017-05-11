@@ -68,6 +68,10 @@ class LocationService extends DataService {
     return !hasErrors;
   }
 
+  getByNeighborhoodId(neighborhoodId) {
+    return this.locations().filter(l => l.neighborhoodId() === neighborhoodId);
+  }
+
   create(locationData) {
     if (this.validateLocationData(locationData)) {
       try {
