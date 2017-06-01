@@ -1,4 +1,5 @@
 import ko from "knockout";
+
 import HomePage from "../../pages/home/home";
 import WelcomePage from "../../pages/welcome/welcome";
 
