@@ -1,10 +1,8 @@
 import ko from "knockout";
-import postal from "postal";
 import loadGoogleMapsAPI from "load-google-maps-api";
 
 class Map {
   constructor(params) {
-    this.channel = postal.channel('googleMap');
     this.googleMaps = null;
     this.center = params.center;
     this.zoom = params.zoom;
@@ -68,7 +66,7 @@ class Map {
   }
 
   registerMapListeners() {
-    this.googleMaps.event.addListener(this.map(), 'click', e => this.channel.publish('mapClick', e));
+    // this.googleMaps.event.addListener(this.map(), 'click', e => this.channel.publish('mapClick', e));
   }
 
 }
