@@ -1,5 +1,6 @@
 @import "dialog-polyfill/dialog-polyfill";
-@import "material-design-lite/src/material-design-lite.scss";
+@import "sweetalert2/src/sweetalert2";
+@import "material-design-lite/src/material-design-lite";
 
 html, body, .page-content, .mdl-layout__content {
   height: 100%;
@@ -23,6 +24,6 @@ html, body, .page-content, .mdl-layout__content {
   height: 100%;
 }
 
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, .8);
+.swal2-modal {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
