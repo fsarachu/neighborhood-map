@@ -1,5 +1,5 @@
 import ko from 'knockout';
-import Model from "../core/Model";
+import Model from "../../core/Model";
 import NeighborhoodService from '../services/NeighborhoodService';
 
 export default class Location extends Model {

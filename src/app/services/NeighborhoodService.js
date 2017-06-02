@@ -1,7 +1,7 @@
 import ko from "knockout";
 import Neighborhood from "../models/Neighborhood";
-import DataError from "../core/DataError";
-import DataService from "../core/DataService";
+import DataError from "../../core/DataError";
+import DataService from "../../core/DataService";
 
 class NeighborhoodService extends DataService {
 

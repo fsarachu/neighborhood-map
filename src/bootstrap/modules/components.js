@@ -1,9 +1,9 @@
 import ko from "knockout";
 
-import AppComponent from "../../components/app/app";
-import GoogleMapComponent from "../../components/googleMap/googleMap";
-import NeighborhoodMapComponent from "../../components/neighborhoodMap/neighborhoodMap";
-import WelcomeDialogComponent from "../../components/welcomeDialog/welcomeDialog";
+import AppComponent from "../../app/components/app/app";
+import GoogleMapComponent from "../../app/components/googleMap/googleMap";
+import NeighborhoodMapComponent from "../../app/components/neighborhoodMap/neighborhoodMap";
+import WelcomeDialogComponent from "../../app/components/welcomeDialog/welcomeDialog";
 
 ko.components.register('app', AppComponent);
 ko.components.register('app-google-map', GoogleMapComponent);
