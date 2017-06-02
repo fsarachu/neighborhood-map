@@ -1,4 +1,8 @@
 class Home {
+
+  constructor(ctx) {
+  }
+
 }
 
 export default {

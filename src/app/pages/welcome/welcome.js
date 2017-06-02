@@ -1,4 +1,8 @@
 class Welcome {
+
+  constructor(ctx) {
+  }
+
 }
 
 export default {
