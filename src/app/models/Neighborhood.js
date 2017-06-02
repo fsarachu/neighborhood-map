@@ -1,5 +1,5 @@
 import ko from 'knockout';
-import Model from '../../core/Model';
+import Model from '../../base/Model';
 
 export default class Neighborhood extends Model {
 

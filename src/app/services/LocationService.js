@@ -1,7 +1,7 @@
 import ko from "knockout";
 import Location from "../models/Location";
-import DataError from "../../core/DataError";
-import DataService from "../../core/DataService";
+import DataError from "../../base/DataError";
+import DataService from "../../base/DataService";
 
 class LocationService extends DataService {
 
