@@ -1,9 +1,21 @@
 import swal from "sweetalert2";
+import NeighborhoodService from "../../services/NeighborhoodService";
 
 class Welcome {
 
   constructor(ctx) {
     this.showWelcomeMessage();
+  }
+
+  createHood() {
+    let service = new NeighborhoodService();
+    service.save({
+      name: 'My Neighborhood',
+      position: {
+        lat: 12.32131,
+        lng: 3.31312
+      }
+    });
   }
 
   showWelcomeMessage() {
