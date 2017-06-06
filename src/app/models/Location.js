@@ -13,7 +13,7 @@ export default class Location extends Model {
       lng: ko.observable(data.position.lng),
     };
     this.neighborhoodId = ko.observable(data.neighborhoodId);
-    this.neighborhood = ko.computed(() => NeighborhoodService.get(this.neighborhoodId()));
+    this.neighborhood = ko.computed(() => (new NeighborhoodService).fetch(this.neighborhoodId()));
     this.marker = ko.observable();
   }
 
