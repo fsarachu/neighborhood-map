@@ -47,6 +47,11 @@ class LocationService extends DataService {
     return ko.observableArray(data.map(l => new Location(l)))
   }
 
+  fetch(id) {
+    let data = JSON.parse(window.localStorage.getItem(`locations.${id}`));
+    return data ? new Location(data) : null;
+  }
+
 }
 
 export default new LocationService();
