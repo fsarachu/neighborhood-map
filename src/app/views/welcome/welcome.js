@@ -4,18 +4,23 @@ import NeighborhoodService from "../../services/NeighborhoodService";
 class Welcome {
 
   constructor(ctx) {
+    this.ctx = ctx;
     this.showWelcomeMessage();
   }
 
   createHood() {
     let service = new NeighborhoodService();
-    service.save({
+    let neighborhood = service.save({
       name: 'My Neighborhood',
       position: {
         lat: 12.32131,
         lng: 3.31312
       }
     });
+
+    if (neighborhood) {
+      this.ctx.router.update('//');
+    }
   }
 
   showWelcomeMessage() {
@@ -26,7 +31,6 @@ class Welcome {
       confirmButtonClass: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored',
       buttonsStyling: false,
     });
-
   }
 
 }
