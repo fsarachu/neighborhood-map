@@ -1,5 +1,5 @@
 import Router from "ko-component-router";
-import routes from "../../routes/routes";
+import routes from "../../router/routes";
 
 Router.setConfig({
   base: '',
