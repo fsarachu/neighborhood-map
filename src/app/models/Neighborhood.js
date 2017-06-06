@@ -1,5 +1,5 @@
-import ko from 'knockout';
-import Model from '../../base/Model';
+import ko from "knockout";
+import Model from "../../base/Model";
 
 export default class Neighborhood extends Model {
 
@@ -12,14 +12,4 @@ export default class Neighborhood extends Model {
     };
   }
 
-  toStorable() {
-    return {
-      id: this.id(),
-      name: this.name(),
-      position: {
-        lat: this.position.lat(),
-        lng: this.position.lng(),
-      },
-    };
-  }
 }
