@@ -38,6 +38,15 @@ class LocationService extends DataService {
     return ids.length ? Math.max(...ids) + 1 : 1;
   }
 
+  fetchAll() {
+    let data = Object
+      .keys(window.localStorage)
+      .filter(k => k.indexOf('locations.') === 0)
+      .map(k => JSON.parse(window.localStorage.getItem(k)));
+
+    return ko.observableArray(data.map(l => new Location(l)))
+  }
+
 }
 
 export default new LocationService();
