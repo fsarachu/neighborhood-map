@@ -14,28 +14,28 @@ export default class DataService {
     }
   }
 
-  loadData(data) {
-    for (let itemData of data) {
-      this.loadItem(itemData);
-    }
-
-    this.logErrors();
+  validateData(data) {
+    throw 'You must override validateData() in DataService';
   }
 
   nextId() {
     throw 'You must override nextId() in DataService';
   }
 
-  loadItem(itemData) {
-    throw 'You must override loadItem() in DataService';
+  fetchAll() {
+    throw 'You must override getAll() in DataService';
   }
 
-  loadFromLocalStorage() {
-    throw 'You must override loadFromLocalStorage() in DataService';
+  fetch(id) {
+    throw 'You must override get() in DataService';
   }
 
-  saveToLocalStorage() {
-    throw 'You must override saveToLocalStorage() in DataService';
+  save(data) {
+    throw 'You must override save() in DataService';
+  }
+
+  destroy(id) {
+    throw 'You must override destroy() in DataService';
   }
 
 }
