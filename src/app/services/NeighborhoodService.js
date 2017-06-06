@@ -3,46 +3,9 @@ import Neighborhood from "../models/Neighborhood";
 import DataError from "../../base/DataError";
 import DataService from "../../base/DataService";
 
-class NeighborhoodService extends DataService {
+export default class NeighborhoodService extends DataService {
 
-  constructor() {
-    super();
-    this.neighborhoods = ko.observableArray(); // I know, there's only one neighborhood at the moment, but let's leave the option for multiple neighborhoods open..
-    this.loadFromLocalStorage();
-  }
-
-  nextId() {
-    if (this.neighborhoods().length) {
-      let ids = this.neighborhoods().map(n => n.id());
-      return Math.max(...ids);
-    }
-
-    return 1;
-  }
-
-  loadItem(neighborhoodData) {
-    if (this.validateNeighborhoodData(neighborhoodData)) {
-      try {
-        this.neighborhoods.push(new Neighborhood(neighborhoodData));
-      } catch (e) {
-        throw new DataError(`Couldn't load Neighborhood: ${e.message}`, neighborhoodData);
-      }
-    }
-  }
-
-  loadFromLocalStorage() {
-    let neighborhoodsData = JSON.parse(window.localStorage.getItem('neighborhoods'));
-    if (neighborhoodsData) {
-      this.loadData(neighborhoodsData);
-    }
-  }
-
-  saveToLocalStorage() {
-    let neighborhoodsData = this.neighborhoods().map(n => n.toStorable());
-    window.localStorage.setItem('neighborhoods', JSON.stringify(neighborhoodsData));
-  }
-
-  validateNeighborhoodData(neighborhoodData) {
+  validateData(neighborhoodData) {
     let hasErrors = false;
 
     let requiredProperties = [
@@ -58,7 +21,7 @@ class NeighborhoodService extends DataService {
       }
     }
 
-    if (neighborhoodData.position && ( !('lat' in neighborhoodData.position) || !('lng' in neighborhoodData.position) || typeof neighborhoodData.position.lat != 'number' || typeof neighborhoodData.position.lng != 'number')) {
+    if (neighborhoodData.position && ( !('lat' in neighborhoodData.position) || !('lng' in neighborhoodData.position) || typeof neighborhoodData.position.lat !== 'number' || typeof neighborhoodData.position.lng !== 'number')) {
       this.errors.push(new DataError('Invalid position Neighborhood property', neighborhoodData));
       hasErrors = true;
     }
@@ -66,31 +29,45 @@ class NeighborhoodService extends DataService {
     return !hasErrors;
   }
 
-  get(id = null) {
-    if (!id) {
-      return this.neighborhoods()[0];
-    }
-    return this.neighborhoods().find(n => n.id() === id);
+  nextId() {
+    let neighborhoods = ko.unwrap(this.fetchAll());
+    let ids = neighborhoods.map(n => n.id());
+
+    return ids.length ? Math.max(...ids) + 1 : 1;
   }
 
-  create(neighborhoodData) {
-    neighborhoodData.id = this.nextId();
+  fetchAll() {
+    let data = Object
+      .keys(window.localStorage)
+      .filter(k => k.indexOf('neighborhoods.') === 0)
+      .map(k => JSON.parse(window.localStorage.getItem(k)));
 
-    if (this.validateNeighborhoodData(neighborhoodData)) {
-      try {
-        let neighborhood = new Neighborhood(neighborhoodData);
-        this.neighborhoods.push(neighborhood);
-        this.saveToLocalStorage();
-        return neighborhood;
-      }
-      catch (e) {
-        throw new DataError(`Couldn't create Neighborhood: ${e.message}`, neighborhoodData);
-      }
+    return ko.observableArray(data.map(n => new Neighborhood(n)))
+  }
+
+  fetch(id) {
+    let data = JSON.parse(window.localStorage.getItem(`neighborhoods.${id}`));
+    return data ? new Neighborhood(data) : null;
+  }
+
+  save(data) {
+    if (!data.id) {
+      data.id = this.nextId();
+    }
+
+    if (this.validateData(data)) {
+      window.localStorage.setItem(`neighborhoods.${data.id}`, JSON.stringify(data));
     }
 
     this.logErrors();
+
+    return this.fetch(data.id);
+  }
+
+  destroy(id) {
+    window.localStorage.removeItem(`neighborhoods.${id}`);
   }
 
 }
 
-export default new NeighborhoodService();
+
