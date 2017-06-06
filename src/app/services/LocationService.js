@@ -66,6 +66,10 @@ class LocationService extends DataService {
     return this.fetch(data.id);
   }
 
+  destroy(id) {
+    window.localStorage.removeItem(`locations.${id}`);
+  }
+
 }
 
 export default new LocationService();
