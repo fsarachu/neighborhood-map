@@ -3,7 +3,7 @@ import Location from "../models/Location";
 import DataError from "../../base/DataError";
 import DataService from "../../base/DataService";
 
-class LocationService extends DataService {
+export default class LocationService extends DataService {
 
   validateData(locationData) {
     let hasErrors = false;
@@ -71,5 +71,3 @@ class LocationService extends DataService {
   }
 
 }
-
-export default new LocationService();
