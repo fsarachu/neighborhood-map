@@ -31,6 +31,13 @@ class LocationService extends DataService {
     return !hasErrors;
   }
 
+  nextId() {
+    let locations = ko.unwrap(this.fetchAll());
+    let ids = locations.map(l => l.id());
+
+    return ids.length ? Math.max(...ids) + 1 : 1;
+  }
+
 }
 
 export default new LocationService();
