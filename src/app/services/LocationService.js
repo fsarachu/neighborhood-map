@@ -52,6 +52,20 @@ class LocationService extends DataService {
     return data ? new Location(data) : null;
   }
 
+  save(data) {
+    if (!data.id) {
+      data.id = this.nextId();
+    }
+
+    if (this.validateData(data)) {
+      window.localStorage.setItem(`locations.${data.id}`, JSON.stringify(data));
+    }
+
+    this.logErrors();
+
+    return this.fetch(data.id);
+  }
+
 }
 
 export default new LocationService();
