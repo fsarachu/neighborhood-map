@@ -6,8 +6,4 @@ export default class Model {
     this.id = ko.observable(id);
   }
 
-  toStorable() {
-    throw 'You must override toStorable() in Model';
-  }
-
 }
