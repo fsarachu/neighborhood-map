@@ -1,3 +1,4 @@
+import ko from "knockout";
 import swal from "sweetalert2";
 import NeighborhoodService from "../../services/NeighborhoodService";
 
@@ -5,6 +6,11 @@ class Welcome {
 
   constructor(ctx) {
     this.ctx = ctx;
+    this.mapZoom = ko.observable(2);
+    this.mapCenter = ko.observable({
+      lat: ko.observable(0),
+      lng: ko.observable(0),
+    });
     this.showWelcomeMessage();
   }
 
