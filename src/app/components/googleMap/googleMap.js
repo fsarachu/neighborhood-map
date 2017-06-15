@@ -3,7 +3,6 @@ import loadGoogleMapsAPI from "load-google-maps-api";
 
 class GoogleMap {
   constructor(params) {
-    this.googleMaps = null;
     this.center = params.center;
     this.zoom = params.zoom;
     this.map = ko.observable(null);
@@ -12,22 +11,27 @@ class GoogleMap {
   }
 
   init() {
-    this.loadMap();
+    if (!GoogleMap.api) { //TODO: Improve this section. Tidy up with a promise or something
+      this.loadMap();
+    } else {
+      this.createMap();
+    }
+
     this.subscribeToObservables();
   }
 
   loadMap() {
     loadGoogleMapsAPI({key: 'AIzaSyClOMwnqYq0BzWIu4XvFHY_FJ20w3PZ5cw'})
       .then(gmaps => {
-        this.googleMaps = gmaps;
+        GoogleMap.api = gmaps;
         this.createMap();
       })
       .catch(e => console.error(e));
   }
 
   createMap() {
-    let map = new this.googleMaps.Map(document.getElementById('map'), {
-      center: new this.googleMaps.LatLng(this.center().lat(), this.center().lng()),
+    let map = new GoogleMap.api.Map(document.getElementById('map'), {
+      center: new GoogleMap.api.LatLng(this.center().lat(), this.center().lng()),
       zoom: this.zoom(),
     });
 
@@ -46,30 +50,32 @@ class GoogleMap {
     this.center.subscribe(value => {
       if (this.map()) {
         console.log('Updated center');
-        this.map().setCenter(new this.googleMaps.LatLng(value.lat(), value.lng()));
+        this.map().setCenter(new GoogleMap.api.LatLng(value.lat(), value.lng()));
       }
     });
 
     this.center().lat.subscribe(value => {
       if (this.map()) {
         console.log('Updated center.lat');
-        this.map().setCenter(new this.googleMaps.LatLng(value, this.center().lng()));
+        this.map().setCenter(new GoogleMap.api.LatLng(value, this.center().lng()));
       }
     });
 
     this.center().lng.subscribe(value => {
       if (this.map()) {
         console.log('Updated center.lng');
-        this.map().setCenter(new this.googleMaps.LatLng(this.center().lat(), value));
+        this.map().setCenter(new GoogleMap.api.LatLng(this.center().lat(), value));
       }
     });
   }
 
   registerMapListeners() {
-    // this.googleMaps.event.addListener(this.map(), 'click', e => this.channel.publish('mapClick', e));
+    // GoogleMap.api.event.addListener(this.map(), 'click', e => this.channel.publish('mapClick', e));
   }
 
 }
+
+GoogleMap.api = null;
 
 export default {
   viewModel: GoogleMap,
