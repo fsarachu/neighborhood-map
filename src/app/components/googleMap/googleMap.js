@@ -7,6 +7,7 @@ class GoogleMap {
     this.zoom = params.zoom;
     this.map = ko.observable(null);
     this.isLoading = ko.computed(() => !this.map);
+    this.onMapClick = params.onMapClick;
     this.init();
   }
 
@@ -70,7 +71,7 @@ class GoogleMap {
   }
 
   registerMapListeners() {
-    // GoogleMap.api.event.addListener(this.map(), 'click', e => this.channel.publish('mapClick', e));
+    GoogleMap.api.event.addListener(this.map(), 'click', this.onMapClick);
   }
 
 }
