@@ -39,10 +39,6 @@ class Welcome {
     });
   }
 
-  onMapClick(e) {
-    console.log(`Map clicked at ${e.latLng.lat()}, ${e.latLng.lng()}`);
-  }
-
 }
 
 export default {
