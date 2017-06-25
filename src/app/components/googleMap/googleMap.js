@@ -6,7 +6,6 @@ class GoogleMap {
     this.center = params.center;
     this.zoom = params.zoom;
     this.map = ko.observable(null);
-    this.isLoading = ko.computed(() => !this.map);
     this.init();
   }
 
