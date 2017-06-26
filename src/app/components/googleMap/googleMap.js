@@ -1,70 +1,67 @@
-import ko from "knockout";
 import loadGoogleMapsAPI from "load-google-maps-api";
 
 class GoogleMap {
+
   constructor(params) {
     this.center = params.center;
     this.zoom = params.zoom;
-    this.map = ko.observable(null);
+    this.map = null;
     this.init();
   }
 
   init() {
-    if (!GoogleMap.api) { //TODO: Improve this section. Tidy up with a promise or something
-      this.loadMap();
-    } else {
-      this.createMap();
-    }
+    let createMap = this.loadMap().then(() => this.createMap());
 
-    this.subscribeToObservables();
+    createMap.then(() => {
+      this.registerMapListeners();
+      this.subscribeToObservables();
+    });
   }
 
   loadMap() {
-    loadGoogleMapsAPI({key: 'AIzaSyClOMwnqYq0BzWIu4XvFHY_FJ20w3PZ5cw'})
-      .then(gmaps => {
-        GoogleMap.api = gmaps;
-        this.createMap();
-      })
-      .catch(e => console.error(e));
+    return new Promise((resolve) => {
+
+      if (GoogleMap.api) {
+        return resolve();
+      }
+
+      let loadApi = loadGoogleMapsAPI({key: 'AIzaSyClOMwnqYq0BzWIu4XvFHY_FJ20w3PZ5cw'}).then((api) => GoogleMap.api = api);
+
+      loadApi.then(resolve);
+
+    });
   }
 
   createMap() {
-    let map = new GoogleMap.api.Map(document.getElementById('map'), {
+    let options = {
       center: new GoogleMap.api.LatLng(this.center().lat(), this.center().lng()),
       zoom: this.zoom(),
-    });
+    };
 
-    this.map(map);
-    this.registerMapListeners();
+    this.map = new GoogleMap.api.Map(document.getElementById('map'), options);
+
+    return Promise.resolve();
   }
 
   subscribeToObservables() {
     this.zoom.subscribe(value => {
-      if (this.map()) {
-        console.log('Updated zoom');
-        this.map().setZoom(value);
-      }
+      console.log('Updated zoom');
+      this.map.setZoom(value);
     });
 
     this.center.subscribe(value => {
-      if (this.map()) {
-        console.log('Updated center');
-        this.map().setCenter(new GoogleMap.api.LatLng(value.lat(), value.lng()));
-      }
+      console.log('Updated center');
+      this.map.setCenter(new GoogleMap.api.LatLng(value.lat(), value.lng()));
     });
 
     this.center().lat.subscribe(value => {
-      if (this.map()) {
-        console.log('Updated center.lat');
-        this.map().setCenter(new GoogleMap.api.LatLng(value, this.center().lng()));
-      }
+      console.log('Updated center.lat');
+      this.map.setCenter(new GoogleMap.api.LatLng(value, this.center().lng()));
     });
 
     this.center().lng.subscribe(value => {
-      if (this.map()) {
-        console.log('Updated center.lng');
-        this.map().setCenter(new GoogleMap.api.LatLng(this.center().lat(), value));
-      }
+      console.log('Updated center.lng');
+      this.map.setCenter(new GoogleMap.api.LatLng(this.center().lat(), value));
     });
   }
 
