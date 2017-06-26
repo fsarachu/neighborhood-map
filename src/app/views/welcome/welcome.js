@@ -1,4 +1,5 @@
 import ko from "knockout";
+import postal from "postal";
 import swal from "sweetalert2";
 import NeighborhoodService from "../../services/NeighborhoodService";
 
@@ -11,7 +12,16 @@ class Welcome {
       lat: ko.observable(0),
       lng: ko.observable(0),
     });
+
     this.showWelcomeMessage();
+
+    postal.subscribe({
+      channel: "googleMap",
+      topic: "map.click",
+      callback: function (data, envelope) {
+        console.log(`Map clicked at ${data.lat}, ${data.lng}`);
+      }
+    })
   }
 
   createHood() {
