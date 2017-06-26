@@ -1,3 +1,4 @@
+import postal from "postal";
 import loadGoogleMapsAPI from "load-google-maps-api";
 
 class GoogleMap {
@@ -6,6 +7,7 @@ class GoogleMap {
     this.center = params.center;
     this.zoom = params.zoom;
     this.map = null;
+    this.postalChannel = postal.channel('googleMap');
     this.init();
   }
 
@@ -66,7 +68,16 @@ class GoogleMap {
   }
 
   registerMapListeners() {
-    // GoogleMap.api.event.addListener(this.map(), 'click', this.onMapClick);
+
+    GoogleMap.api.event.addListener(this.map, 'click', (e) => {
+      let coords = {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng()
+      };
+
+      this.postalChannel.publish('map.click', coords);
+    });
+
   }
 
 }
