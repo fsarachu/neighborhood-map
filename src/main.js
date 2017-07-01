@@ -1,1 +1,1 @@
-import "./bootstrap/app";
+import "./bootstrap";
