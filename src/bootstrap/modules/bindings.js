@@ -1,1 +1,1 @@
-import "../../app/bindings/mdlDrawer";
+// Import all modules from "./bindings/*"
