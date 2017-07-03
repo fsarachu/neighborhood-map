@@ -1,3 +1,4 @@
+import "./styles.css";
 import postal from "postal";
 import loadGoogleMapsAPI from "load-google-maps-api";
 
