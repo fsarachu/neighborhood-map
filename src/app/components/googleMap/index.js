@@ -86,5 +86,5 @@ GoogleMap.api = null;
 
 export default {
   viewModel: GoogleMap,
-  template: require('./googleMap.html')
+  template: require('./template.html')
 };
