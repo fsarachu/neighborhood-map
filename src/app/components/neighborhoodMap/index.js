@@ -19,5 +19,5 @@ class NeighborhoodMap {
 
 export default {
   viewModel: NeighborhoodMap,
-  template: require('./neighborhoodMap.html')
+  template: require('./template.html')
 };
