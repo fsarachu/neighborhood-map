@@ -3,5 +3,5 @@ class App {
 
 export default {
   viewModel: App,
-  template: require('./app.html')
+  template: require('./template.html')
 };
