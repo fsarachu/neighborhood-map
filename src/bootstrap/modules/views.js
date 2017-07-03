@@ -1,7 +1,7 @@
 import ko from "knockout";
 
 import HomePage from "../../app/views/home";
-import WelcomePage from "../../app/views/welcome/welcome";
+import WelcomePage from "../../app/views/welcome";
 
 ko.components.register('home-page', HomePage);
 ko.components.register('welcome-page', WelcomePage);
