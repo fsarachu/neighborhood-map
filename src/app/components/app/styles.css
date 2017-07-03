@@ -1,0 +1,28 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.uk-navbar-container {
+  z-index: 10;
+}
+
+.uk-navbar-container,
+.uk-navbar-item.uk-logo {
+  height: 54px;
+}
+
+.uk-navbar-item.uk-logo {
+ font-size: 1.3rem;
+}
+
+.uk-offcanvas-content {
+  height: 100%;
+}
+
+#router-view {
+  height: calc(100% - 54px);
+  position: relative;
+}

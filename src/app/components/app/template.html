@@ -1,1 +1,29 @@
-<ko-component-router></ko-component-router>
+<div class="uk-offcanvas-content">
+
+  <nav class="uk-navbar-container uk-box-shadow-medium" uk-navbar>
+
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#off-canvas" uk-toggle></a>
+    </div>
+
+    <div class="uk-navbar-center">
+      <a class="uk-navbar-item uk-logo" href="#">Neighborhood Map</a>
+    </div>
+
+  </nav>
+
+  <!-- The whole page content goes here -->
+  <div id="router-view">
+    <ko-component-router></ko-component-router>
+  </div>
+
+  <!-- This is the off-canvas -->
+  <div id="off-canvas" uk-offcanvas>
+    <div class="uk-offcanvas-bar">
+
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+    </div>
+  </div>
+
+</div>
